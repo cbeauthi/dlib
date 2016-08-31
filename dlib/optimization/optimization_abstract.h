@@ -282,8 +282,7 @@ namespace dlib
         const funct_der& der, 
         T& x,
         const matrix_exp<EXP1>& x_lower,
-        const matrix_exp<EXP2>& x_upper,
-        unsigned long int* num_iter = 0
+        const matrix_exp<EXP2>& x_upper
     );
     /*!
         requires
@@ -300,7 +299,6 @@ namespace dlib
               (i.e. x, x_lower, and x_upper need to all be column vectors of the same dimensionality)
             - min(x_upper-x_lower) >= 0
               (i.e. x_upper must contain upper bounds relative to x_lower)
-            - num_iter == an object that will return the number of performed iterations
         ensures
             - Performs a box constrained minimization of the function f() using the given
               search_strategy and starting from the initial point x.  That is, we try to
@@ -313,7 +311,6 @@ namespace dlib
               point has been found. 
             - #x == the value of x that was found to minimize f() within the given box
               constraints.
-            - #num_iter == the number of effective iterations performed
             - returns f(#x). 
             - The last call to f() will be made with f(#x).  
             - When calling f() and der(), the input passed to them will always be inside
@@ -340,8 +337,7 @@ namespace dlib
         const funct_der& der, 
         T& x,
         const double x_lower,
-        const double x_upper,
-        unsigned long int* num_iter = 0
+        const double x_upper
     );
     /*!
         requires
@@ -353,7 +349,6 @@ namespace dlib
             - der(x) must be a valid expression that evaluates to the derivative of f() at x.
             - is_col_vector(x) == true
             - x_lower < x_upper
-            - num_iter == an object that will return the number of performed iterations
         ensures
             - This function is identical to find_min_box_constrained() as defined above
               except that it takes x_lower and x_upper as doubles rather than column
@@ -381,8 +376,7 @@ namespace dlib
         const funct_der& der, 
         T& x,
         const matrix_exp<EXP1>& x_lower,
-        const matrix_exp<EXP2>& x_upper,
-        unsigned long int* num_iter = 0
+        const matrix_exp<EXP2>& x_upper
     );
     /*!
         requires
@@ -399,7 +393,6 @@ namespace dlib
               (i.e. x, x_lower, and x_upper need to all be column vectors of the same dimensionality)
             - min(x_upper-x_lower) >= 0
               (i.e. x_upper must contain upper bounds relative to x_lower)
-            - num_iter == an object that will return the number of performed iterations
         ensures
             - Performs a box constrained maximization of the function f() using the given
               search_strategy and starting from the initial point x.  That is, we try to
@@ -412,7 +405,6 @@ namespace dlib
               point has been found. 
             - #x == the value of x that was found to maximize f() within the given box
               constraints.
-            - #num_iter == the number of effective iterations performed
             - returns f(#x). 
             - The last call to f() will be made with f(#x).  
             - When calling f() and der(), the input passed to them will always be inside
@@ -445,8 +437,7 @@ namespace dlib
         const funct_der& der, 
         T& x,
         const double x_lower,
-        const double x_upper,
-        unsigned long int* num_iter = 0
+        const double x_upper
     );
     /*!
         requires
@@ -458,7 +449,6 @@ namespace dlib
             - der(x) must be a valid expression that evaluates to the derivative of f() at x.
             - is_col_vector(x) == true
             - x_lower < x_upper
-            - num_iter == an object that will return the number of performed iterations
         ensures
             - This function is identical to find_max_box_constrained() as defined above
               except that it takes x_lower and x_upper as doubles rather than column
